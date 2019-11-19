@@ -23,11 +23,11 @@ $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 // Check the connection to the database
 // head to http://localhost/PHP_cms/includes/db.php to verify!
-if ($connection) {
-    echo "We are connected to the Database";
-} else {
-    echo "Connection is broken";
-}
+// if ($connection) {
+//     echo "We are connected to the Database";
+// } else {
+//     echo "Connection is broken";
+// }
 
 
 ?>

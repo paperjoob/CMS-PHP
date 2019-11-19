@@ -1,4 +1,6 @@
-    <!-- header -->
+<!-- connect to the Database -->
+<?php include "includes/db.php"; ?>
+  <!-- header -->
     <?php 
         include "includes/header.php";
     ?>
