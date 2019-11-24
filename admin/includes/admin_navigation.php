@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">CMS Admin</a>
+                <a class="navbar-brand" href="#">CMS Admin</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -32,7 +32,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#posts_dropdown">
@@ -40,7 +40,7 @@
                         </a>
                         <ul id="posts_dropdown" class="collapse">
                             <li>
-                                <a href="#">View All Posts</a>
+                                <a href="./posts.php">View All Posts</a>
                             </li>
                             <li>
                                 <a href="#">Add Posts</a>
@@ -48,7 +48,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i>Categories</a>
+                        <a href="./categories.php"><i class="fa fa-fw fa-wrench"></i>Categories</a>
                     </li>
                     <li class="active">
                         <a href="blank-page.html"><i class="fa fa-fw fa-file"></i>Comments</a>
