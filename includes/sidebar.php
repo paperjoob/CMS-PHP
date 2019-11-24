@@ -20,42 +20,38 @@
 
         <!-- Blog Categories Well -->
         <div class="well">
+
+            <?php 
+                // query from the database
+                $query = "SELECT * FROM categories"; // to LIMIT the query, it would be LIMIT 3;
+                // query mysql with the connection and query
+                $select_categories_sidebar = mysqli_query($connection, $query);
+
+                
+            ?>
+
             <h4>Blog Categories</h4>
             <div class="row">
-                <div class="col-lg-6">
+                <!-- bootstrap column 6 or 12 is how big the div would expand -->
+                <div class="col-lg-12"> 
                     <ul class="list-unstyled">
-                        <li><a href="#">Category Name</a>
-                        </li>
-                        <li><a href="#">Category Name</a>
-                        </li>
-                        <li><a href="#">Category Name</a>
-                        </li>
-                        <li><a href="#">Category Name</a>
-                        </li>
+                        <?php 
+                            // display the categories with a WHILE LOOP
+                            while($row = mysqli_fetch_assoc($select_categories_sidebar)) {
+                                // the result will be returned in an associative array
+                                $cat_title = $row['cat_title'];
+                                // use double quotes for HTML brackets
+                                echo "<li><a href='#'>{$cat_title}</a></li>";
+                            }
+                        ?>
                     </ul>
                 </div>
-                <!-- /.col-lg-6 -->
-                <div class="col-lg-6">
-                    <ul class="list-unstyled">
-                        <li><a href="#">Category Name</a>
-                        </li>
-                        <li><a href="#">Category Name</a>
-                        </li>
-                        <li><a href="#">Category Name</a>
-                        </li>
-                        <li><a href="#">Category Name</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.col-lg-6 -->
+                <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-        </div>
+        </div> <!-- end blog categories -->
 
         <!-- Side Widget Well -->
-        <div class="well">
-            <h4>Side Widget Well</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
-        </div>
-
+        <?php include "widget.php" ?>
+        
     </div>
