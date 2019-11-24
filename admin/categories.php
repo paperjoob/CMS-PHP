@@ -20,7 +20,27 @@
                         </h1>
                         <!-- Add Category Form col-xs-6 takes up half of the page -->
                         <div class="col-xs-6">
-                            <form action="">
+                            <?php 
+                                // if submit is clicked
+                                if(isset($_POST["submit"])) {
+                                    $cat_title = $_POST['cat_title'];
+                                    // echo $cat_title;
+                                    // input validation
+                                    if($cat_title == "" | empty($cat_title)) {
+                                        echo "This field should not be empty.";
+                                    } else { // if not empty, create the post inside our database
+                                        $query = "INSERT INTO categories (cat_title)";
+                                        $query .= "VALUES ('{$cat_title}')";
+                                        // pass in query to the database
+                                        $create_category = mysqli_query($connection, $query);
+                                        // if create_category did not post, kill the process and show error
+                                        if(!$create_category) {
+                                            die('Query Post in Add Category Failed' . mysqli_error($connection));
+                                        }
+                                    }
+                                }
+                            ?>
+                            <form action="" method="post">
                                 <div class="form-group">
                                     <label for="cat-title">Category Title</label>
                                     <input class="form-control" type="text" name="cat_title">
