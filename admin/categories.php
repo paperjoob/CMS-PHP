@@ -49,22 +49,30 @@
                                     <input class="btn btn-primary" type="submit" name="submit" value="Add Category">
                                 </div>
                             </form>
+
+                            <?php 
+                                if(isset($_GET['edit'])) {
+                                    $cat_id = $_GET['edit'];
+
+                                    include "includes/update_categories.php";
+                                }
+                            ?>
                         </div> <!-- End of Add Category Form -->
                         <!-- Beginning of Table Category Div -->
                         <div class="col-xs-6">
                             <?php 
-                                // query from the database
+                                // FIND ALL Categories Query from the database
                                 $query = "SELECT * FROM categories"; // to LIMIT the query, it would be LIMIT 3;
                                 // query mysql with the connection and query
                                 $select_categories_admin = mysqli_query($connection, $query);
-
-                                
                             ?>
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
                                         <th>Category Title</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -78,7 +86,21 @@
                                             echo "<tr>";
                                             echo "<td>{$cat_id}</td>";
                                             echo "<td>{$cat_title}</td>";
+                                            echo "<td><a href='categories.php?edit={$cat_id}'>Edit</a></td>";
+                                            echo "<td><a href='categories.php?delete={$cat_id}'>Delete</a></td>";
                                             echo "</tr>";
+                                        }
+                                    ?>
+
+                                    <?php 
+                                        // DELETE QUERY
+                                        if(isset($_GET['delete'])) {
+                                            $cat_id_delete = $_GET['delete'];
+                                            // create Delete query
+                                            $query = "DELETE FROM categories WHERE cat_id = {$cat_id_delete}";
+                                            $delete_category_query = mysqli_query($connection, $query);
+                                            // refreshes the page upon Deleting an item
+                                            header("Location: categories.php");
                                         }
                                     ?>
                                 </tbody>

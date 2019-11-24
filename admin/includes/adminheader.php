@@ -1,3 +1,7 @@
+<?php 
+// output buffering
+ ob_start(); // in charge of buffering our requests (content) so it will send everything at the same time.
+ ?>
 <?php include "../includes/db.php" ?>
 
 <!DOCTYPE html>
