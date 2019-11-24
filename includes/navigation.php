@@ -13,6 +13,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+
                     <?php 
                         // query from the database
                         $query = "SELECT * FROM categories";
@@ -27,6 +28,10 @@
                             echo "<li><a href='#'>{$cat_title}</a></li>";
                         }
                     ?>
+                    <!-- Add Admin page to the Navigation Bar -->
+                    <li>
+                        <a href="admin">Admin</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

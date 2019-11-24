@@ -25,4 +25,5 @@ CREATE TABLE posts (
     post_status varchar(255) DEFAULT draft
 );
 
+-- INSERT 
 INSERT INTO `posts` (`post_id`, `post_category_id`, `post_title`, `post_author`, `post_date`, `post_image`, `post_content`, `post_tags`, `post_comment_count`, `post_status`) VALUES (NULL, '1', 'Learning PHP Course', 'See Yang', '2019-11-23', NULL, 'I really like this course!', 'see, javascript, php', '1', 'draft');
