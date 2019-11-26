@@ -42,8 +42,27 @@
         <input class="form-control" type="text" name="post_author">
     </div>
     <div class="form-group">
-        <label for="cat-title">Category ID</label>
-        <input class="form-control" type="text" name="post_category_id">
+        <label for="cat-title">Category</label>
+        <select name="post_category_id" id="post_category_select">
+            <?php 
+                // create a query to select all categories where the category id is equal to the one selected
+                $query = "SELECT * FROM categories"; // 
+                // query mysql with the connection and query
+                $select_categories = mysqli_query($connection, $query);
+
+                // if there are errors, run the confirmQuery function to show the errors
+                confirmQuery($select_categories);
+
+                // create a while loop for all the categories
+                while($row = mysqli_fetch_assoc($select_categories)) {
+                    // the result will be returned in an associative array
+                    $cat_id = $row['cat_id'];
+                    $cat_title = $row['cat_title'];
+                    // the option values are the category titles and the values are set to their IDs
+                echo "<option value='{$cat_id}'>{$cat_title}</option>";
+                }
+            ?>
+        </select>
     </div>
     <div class="form-group">
         <label for="cat-title">Status</label>

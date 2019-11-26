@@ -77,7 +77,7 @@
         <input value="<?php echo $post_author ?>" class="form-control" type="text" name="post_author">
     </div>
     <div class="form-group">
-        <label for="cat-title">Category ID</label>
+        <label for="cat-title">Category</label>
         <select name="post_category_id" id="post_category_select">
             <?php 
                 // create a query to select all categories where the category id is equal to the one selected
