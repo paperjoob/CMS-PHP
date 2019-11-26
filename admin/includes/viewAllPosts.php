@@ -38,7 +38,19 @@
                         echo "<td>{$post_id}</td>";
                         echo "<td>{$post_title}</td>";
                         echo "<td>{$post_author}</td>";
-                        echo "<td>{$post_category_id}</td>";
+
+                        // Find the Category name from the ID - relational tables in categories and posts tables
+                        $query = "SELECT * FROM categories WHERE cat_id = {$post_category_id} ";
+                        // query mysql with the connection and query
+                        $select_categories_edit_id = mysqli_query($connection, $query);
+
+                        while($row = mysqli_fetch_assoc($select_categories_edit_id)) {
+                        // the result will be returned in an associative array
+                        $cat_id = $row['cat_id'];
+                        $cat_title = $row['cat_title'];
+                        }
+
+                        echo "<td>{$cat_title}</td>";
                         echo "<td>{$post_status}</td>";
                         echo "<td><img src='../images/{$post_image}' width=150 class='img-responsive'></td>";
                         echo "<td>{$post_tags}</td>";
