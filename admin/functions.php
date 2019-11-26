@@ -1,4 +1,14 @@
 <?php 
+
+    // if query failed, run this function and show the error;
+    // the parameter $result can be filled in with the query sent to the database
+    function confirmQuery($result) {
+        global $connection;
+        if(!$result) {
+            die("Query Failed" . mysqli_error($connection));
+        }
+    }
+
     function insert_categories() {
         // add in the GLOBAL connection to the database
         global $connection;
