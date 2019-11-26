@@ -11,7 +11,10 @@
     $query = "SELECT * FROM posts WHERE post_id = $get_edit_post_id";
     $select_post_by_id_edit = mysqli_query($connection, $query);
 
-    // while loop through to add each value in a row
+    // check if there are errors
+    confirmQuery($select_post_by_id_edit);
+
+    // while loop through to grab each value and assign them each a value
     while($row = mysqli_fetch_assoc($select_post_by_id_edit)) {
         $post_id = $row['post_id'];
         $post_title = $row['post_title'];
@@ -23,9 +26,9 @@
         $post_content = $row['post_content'];
         $post_comment_count = $row['post_comment_count'];
         $post_date = $row['post_date'];
+
     }
 ?>
-
 
 <form action="" method="post" enctype="multipart/form-data">
     <div class="form-group">
@@ -38,7 +41,23 @@
     </div>
     <div class="form-group">
         <label for="cat-title">Category ID</label>
-        <input value="<?php echo $post_category_id ?>" class="form-control" type="text" name="post_category_id">
+        <select name="post_cateogry" id="post_category_select">
+            <?php 
+                // create a query to select all categories where the category id is equal to the one selected
+                $query = "SELECT * FROM categories"; // 
+                // query mysql with the connection and query
+                $select_categories = mysqli_query($connection, $query);
+                // if there are errors, run the confirmQuery function to show the errors
+                confirmQuery($select_categories);
+                // create a while loop for all the categories
+                while($row = mysqli_fetch_assoc($select_categories)) {
+                    // the result will be returned in an associative array
+                    $cat_id = $row['cat_id'];
+                    $cat_title = $row['cat_title'];
+                echo "<option value='{$cat_id}'>{$cat_title}</option>";
+                }
+            ?>
+        </select>
     </div>
     <div class="form-group">
         <label for="cat-title">Status</label>
@@ -46,7 +65,8 @@
     </div>
     <div class="form-group">
         <label for="cat-title">Image</label>
-        <input type="file" name="post_image">
+        <br/>
+        <img src="../images/<?php echo $post_image; ?>" width=100>
     </div>
     <div class="form-group">
         <label for="cat-title">Tags</label>
@@ -54,11 +74,10 @@
     </div>
     <div class="form-group">
         <label for="cat-title">Content</label>
-        <textarea class="form-control" type="text" id="" name="post_content" cols="20" rows="10">
-            <?php echo $post_content ?>
+        <textarea class="form-control" type="text" id="" name="post_content" cols="20" rows="10"><?php echo $post_content ?>
         </textarea>
     </div>
     <div class="form-group">
-        <input class="btn btn-primary" type="submit" name="create_post" value="Add Post">
+        <input class="btn btn-primary" type="submit" name="create_post" value="Update Post">
     </div>
 </form>
