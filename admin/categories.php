@@ -16,7 +16,6 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             Categories
-                            <small>Author</small>
                         </h1>
                         <!-- Add Category Form col-xs-6 takes up half of the page -->
                         <div class="col-xs-6">

@@ -30,8 +30,8 @@
                                 case 'addPosts';
                                     include "includes/addPosts.php";
                                     break;
-                                case '10';
-                                    echo 'NICE 10';
+                                case 'editPost';
+                                    include "includes/editPost.php";
                                     break;
                                 case '20';
                                     echo 'NICE 20';
