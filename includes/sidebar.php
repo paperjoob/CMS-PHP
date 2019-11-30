@@ -39,9 +39,11 @@
                             // display the categories with a WHILE LOOP
                             while($row = mysqli_fetch_assoc($select_categories_sidebar)) {
                                 // the result will be returned in an associative array
+                                $cat_id = $row['cat_id'];
                                 $cat_title = $row['cat_title'];
                                 // use double quotes for HTML brackets
-                                echo "<li><a href='#'>{$cat_title}</a></li>";
+                                // the category key GET value will be in the category.php to select any posts with that category
+                                echo "<li><a href='category.php?category=$cat_id'>{$cat_title}</a></li>";
                             }
                         ?>
                     </ul>
