@@ -10,7 +10,6 @@
             <th>In Response To: </th>
             <th>Approve</th>
             <th>Unapprove</th>
-            <th>Edit</th>
             <th>Delete</th>
         </tr>
     </thead>
@@ -64,13 +63,11 @@
                         }
 
                         // approve the comment
-                        echo "<td><a href='posts.php?source=editPost&p_id='>Approve</a></td>";
+                        echo "<td><a href='comments.php?source=editPost&p_id='>Approve</a></td>";
                         // unapprove the comment
-                        echo "<td><a href='posts.php?delete='>Unapprove</a></td>";
-                        // edit post sourced to the $p_id= to the post_id of the specific post
-                        echo "<td><a href='posts.php?source=editPost&p_id='>Edit</a></td>";
-                        // delete a specific post by the post_id
-                        echo "<td><a href='posts.php?delete='>Delete</a></td>";
+                        echo "<td><a href='comments.php?unapprove='>Unapprove</a></td>";
+                        // delete a specific post by the comment_id
+                        echo "<td><a href='comments.php?delete=$comment_id'>Delete</a></td>";
                     echo "</tr>";
                 }
             ?>
@@ -80,11 +77,13 @@
 <?php 
     // if delete is set in the GET function
     if(isset($_GET['delete'])) {
-        $post_id_to_delete = $_GET['delete'];
-        // the query to delete where the post_id is equal to the id of the post to be deleted
-        $query = "DELETE FROM posts WHERE post_id = $post_id_to_delete";
+        $comment_id_to_delete = $_GET['delete'];
+        // the query to delete where the comment_id is equal to the id of the post to be deleted
+        $query = "DELETE FROM comments WHERE comment_id = $comment_id_to_delete";
         // the delete query to be sent to the database
         $delete_query = mysqli_query($connection, $query);
+        // refresh page upon delete to the comments.php
+        header("Location: comments.php");
     }
 
 ?>
