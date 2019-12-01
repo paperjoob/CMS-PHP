@@ -30,7 +30,7 @@
                     $post_status = $row['post_status'];
                     $post_image = $row['post_image'];
                     $post_tags = $row['post_tags'];
-                    $post_content = $row['post_content'];
+                    $post_content = substr($row['post_content'], 0, 50);
                     $post_comment_count = $row['post_comment_count'];
                     $post_date = $row['post_date'];
                     // add image src and img class to make it responsive for bootstrap

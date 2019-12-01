@@ -26,7 +26,8 @@
                     $comment_post_id = $row['comment_post_id'];
                     $comment_author = $row['comment_author'];
                     $comment_email = $row['comment_email'];
-                    $comment_content = $row['comment_content'];
+                    // truncate the comment section to display the first 50 characters only
+                    $comment_content = substr($row['comment_content'], 0, 50);
                     $comment_status = $row['comment_status'];
                     $comment_date = $row['comment_date'];
                     echo "<tr>";
@@ -47,7 +48,21 @@
 
                         echo "<td>{$comment_status}</td>";
                         echo "<td>{$comment_date}</td>";
-                        echo "<td>In Response To</td>";
+                        
+                        // create a query to select the everything from POSTS table where the comment_post_id is equal to the post
+                        $query = "SELECT * FROM posts WHERE post_id = $comment_post_id";
+                        // connect query to the database
+                        $select_post_id_query = mysqli_query($connection, $query);
+
+                        while($row = mysqli_fetch_assoc($select_post_id_query)) {
+                            // grab the post id and post title from the posts table
+                            $post_id = $row['post_id'];
+                            $post_title = $row['post_title'];
+                            // echo out the post title to display under "In Response To"
+                            // clicking on the title will take you to the post
+                            echo "<td><a href='../post.php?p_id=$post_id'>$post_title</a></td>";
+                        }
+
                         // approve the comment
                         echo "<td><a href='posts.php?source=editPost&p_id='>Approve</a></td>";
                         // unapprove the comment
