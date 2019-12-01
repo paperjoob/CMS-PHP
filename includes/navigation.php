@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- Clicking on this link brings you to the home page -->
-                <a class="navbar-brand" href="index.php">Learn PHP and Bootstrap</a>
+                <a class="navbar-brand" href="index.php">PHP and Bootstrap CMS</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

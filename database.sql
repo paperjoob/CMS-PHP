@@ -25,5 +25,17 @@ CREATE TABLE posts (
     post_status varchar(255) DEFAULT draft
 );
 
+-- COMMENTS TABLE
+
+CREATE TABLE comments (
+ comment_id int(3) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+ comment_post_id int(3) NOT NULL,
+ comment_author varchar(255) NOT NULL,
+ comment_email varchar(255) NOT NULL,
+ comment_content text NOT NULL,
+ comment_status varchar(255) NOT NULL,
+ comment_date date NOT NULL,
+);
+
 -- INSERT 
 INSERT INTO `posts` (`post_id`, `post_category_id`, `post_title`, `post_author`, `post_date`, `post_image`, `post_content`, `post_tags`, `post_comment_count`, `post_status`) VALUES (NULL, '1', 'Learning PHP Course', 'See Yang', '2019-11-23', NULL, 'I really like this course!', 'see, javascript, php', '1', 'draft');
