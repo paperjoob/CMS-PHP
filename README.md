@@ -6,7 +6,6 @@ Functionalities include:
 - Add new categories, delete, and edit from the Admin side
 
 ### Prerequisites
-​
 - [XAMPP](https://www.apachefriends.org/index.html)
 
 ### Create database and table​s
